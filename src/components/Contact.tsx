@@ -37,24 +37,17 @@ const Contact = () => {
                 ...prev,
                 [data.target.name]: validateEmail(data.target.value)
             }))
-            console.log("validando email")
-            console.log(validateEmail(data.target.value))
         } else if (data.target.name === "name") {
             setErros((prev) => ({
                 ...prev,
                 [data.target.name]: validateName(data.target.value)
             }))
-            console.log("validando name")
-            console.log(validateName(data.target.value))
         } else {
             setErros((prev) => ({
                 ...prev,
                 [data.target.name]: validateMessage(data.target.value)
             }))
-            console.log("validando message")
-            console.log(validateMessage(data.target.value))
         }
-        console.log(errors);
         if (errors.sender === false && errors.name === false && errors.message === false) {
             setNoErrors(false);
         }
@@ -62,13 +55,9 @@ const Contact = () => {
             ...prev,
             [data.target.name]: data.target.value
         }))
-        console.log(messageData);
     }
     const sendEmail = async (e: any) => {
         e.preventDefault();
-        console.log("Se mando")
-        console.log(messageData);
-
         const res = await fetch(`https://corsproxy.io/?${encodeURIComponent('https://backend-pokeapi-2a1d.onrender.com/webhooks/sendEmail')}`, {
             method: "POST",
             headers: {
@@ -76,9 +65,7 @@ const Contact = () => {
             },
             body: JSON.stringify({ sender: messageData.sender, message: messageData.message, name: messageData.name })
         })
-        console.log("RES");
         const data = await res.json();
-        console.log(data);
         if(data.statusCode === 202){
             const toast = Swal.mixin({
                 toast: true,
