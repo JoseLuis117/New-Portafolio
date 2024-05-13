@@ -10,7 +10,7 @@ const Proyects = () => {
     return (
         <>
             <header className="px-8 pb-4 text-white  w-4/5 md:mr-96 border-b-1 border-gray-700">
-                <h2 className="text-3xl font-bold">Mi Proyectos</h2>
+                <h2 className="text-3xl font-bold">Mis Proyectos</h2>
             </header>
             <section className="lg:grid lg:grid-cols-2 p-4 w-full h-full md:grid-rows-2 px-8 space-y-4">
                 <motion.div
@@ -121,7 +121,7 @@ const Proyects = () => {
                     className='pr-4 hidden lg:block'
                 >
                     <h2 className='text-2xl'>Arkitex</h2>
-                    <p className='text-gray-500'>Proyecto de titulación que busca conectar trabajadores de la construcción con empleadores, desarrollada principalmente en los SDK de Firebase como Firestore, CloudStorage y Firebase Auth</p>
+                    <p className='text-gray-500'>Proyecto de titulación que busca conectar a trabajadores de la construcción con empleadores, desarrollado principalmente utilizando los SDK de Firebase, tales como Firestore, Cloud Storage y Firebase Auth.</p>
                 </motion.div>
                 <motion.div
                     className="relative w-full lg:h-full overflow-hidden cursor-pointer max-h-[220px] h-[220px]"
@@ -205,7 +205,7 @@ const Proyects = () => {
                     className='pr-4 block lg:hidden'
                 >
                     <h2 className='text-2xl'>Arkitex</h2>
-                    <p className='text-gray-500'>Proyecto de titulación que busca conectar trabajadores de la construcción con empleadores, desarrollada principalmente en los SDK de Firebase como Firestore, CloudStorage y Firebase Auth</p>
+                    <p className='text-gray-500'>Proyecto de titulación que busca conectar a trabajadores de la construcción con empleadores, desarrollado principalmente utilizando los SDK de Firebase, tales como Firestore, Cloud Storage y Firebase Auth.</p>
                 </motion.div>
             </section>
         </>

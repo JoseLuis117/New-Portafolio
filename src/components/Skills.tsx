@@ -13,7 +13,7 @@ const Skills = () => {
     return (
         <>
             <header className="px-8 pb-4 text-white  w-4/5 mr-96">
-                <h2 className="text-3xl font-bold">Mi habilidades</h2>
+                <h2 className="text-3xl font-bold">Mis habilidades</h2>
             </header>
             <section className="px-8 grid grid-cols-2 contentOne mb-4">
                 <div className="space-y-4 py-6 border-t-1 border-gray-700"

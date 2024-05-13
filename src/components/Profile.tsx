@@ -15,7 +15,7 @@ const ProfileCard = ({ text }: { text: string }) => {
         },
     }
     return (
-        <motion.div className="card md:shadow-2xl md:shadow-black z-40" initial={{opacity:0, y:-200}} animate={{opacity:1, y:0}} transition={{duration:0.7}}>
+        <motion.div className="card md:shadow-2xl md:shadow-black z-40" initial={{ opacity: 0, y: -200 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }}>
             <div className="card__img">
                 <img className='h-2/3 w-full' src="https://img.freepik.com/foto-gratis/ilustracion-lluvia-ciudad-futurista_23-2151406574.jpg?t=st=1715330686~exp=1715334286~hmac=0e915f64c80fa41717ce86ba859e04d1b4ea3d6d69560a1c28a4d20087cd1f2a&w=1380" alt="Cyberpunk IMG" />
             </div>
@@ -42,8 +42,10 @@ const ProfileCard = ({ text }: { text: string }) => {
                     ))}
                 </motion.span>
             </div>
-            <motion.div initial={{opacity:0, scale:0}} animate={{opacity:1, scale:1}} transition={{duration:0.7}}>
-                <Button variant='ghost' color='secondary' className='mt-4'>Descarga Mi CV</Button>
+            <motion.div initial={{ opacity: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7 }}>
+                <a href="/CV.pdf" target='_BLANK'>
+                    <Button variant='ghost' color='secondary' className='mt-4'>Descarga Mi CV</Button>
+                </a>
             </motion.div>
             <div className="card__wrapper">
                 <SocialNetworks />
