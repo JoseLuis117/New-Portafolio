@@ -1,0 +1,19 @@
+.anchor a{
+    font-size: 20px;
+    font-weight: 400;
+}
+.contenedor-info p, span{
+    line-height: 1.7;
+}
+.contenedor-info h1{
+    color: var(--principal);
+}
+.contenedor-info span{
+    color: var(--principal);
+}
+
+/* .imagePersonal{
+    background-image: url('/public/images/yo1.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+} */
