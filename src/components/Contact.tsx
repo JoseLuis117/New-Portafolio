@@ -1,5 +1,6 @@
+import Swal from "sweetalert2";
 import { Button, Input, Textarea } from "@nextui-org/react";
-import { useMemo, useState } from "react";
+import {  useState } from "react";
 const fetchWithProxy = async (url: string, options: any) => {
     const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
     return fetch(proxyUrl + url, options);
@@ -68,7 +69,7 @@ const Contact = () => {
         console.log("Se mando")
         console.log(messageData);
 
-        const res = await fetchWithProxy("https://backend-pokeapi-2a1d.onrender.com/webhooks/sendEmail", {
+        const res = await fetch(`https://corsproxy.io/?${encodeURIComponent('https://backend-pokeapi-2a1d.onrender.com/webhooks/sendEmail')}`, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -78,6 +79,21 @@ const Contact = () => {
         console.log("RES");
         const data = await res.json();
         console.log(data);
+        if(data.statusCode === 202){
+            const toast = Swal.mixin({
+                toast: true,
+                position: 'top',
+                showConfirmButton: false,
+                timer: 3000,
+                background: 'rgb(31 41 55)',
+                color: '#fff',
+            });
+            toast.fire({
+                icon: 'success',
+                title: 'Se envio el mensaje correctamente',
+                padding: '10px 20px',
+            });
+        }
     }
     return (
         <>
