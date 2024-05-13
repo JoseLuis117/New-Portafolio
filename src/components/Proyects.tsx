@@ -33,6 +33,10 @@ const Proyects = () => {
                         childControls.start({ scale: 1 })
                         setShowOverlay(false)
                     }}
+                    onTap={() => {
+                        childControls.start({ scale: 1.1 })
+                        setShowOverlay(true);
+                    }}
                 >
                     <motion.video src="/images/pokeapi.mp4" autoPlay loop muted className="absolute w-full h-full"
                         initial={{ scale: 1 }}
@@ -142,6 +146,10 @@ const Proyects = () => {
                     onHoverEnd={() => {
                         childrenControls2.start({ scale: 1 })
                         setShowOverlay2(false)
+                    }}
+                    onTap={() => {
+                        childrenControls2.start({ scale: 1.1 })
+                        setShowOverlay2(true);
                     }}
                 >
                     <motion.video src="/images/Arkitex.mp4" autoPlay loop muted className="absolute w-full h-full max-h-[220px]"
