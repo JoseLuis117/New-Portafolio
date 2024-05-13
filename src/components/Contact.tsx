@@ -1,6 +1,9 @@
 import { Button, Input, Textarea } from "@nextui-org/react";
 import { useMemo, useState } from "react";
-
+const fetchWithProxy = async (url: string, options: any) => {
+    const proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+    return fetch(proxyUrl + url, options);
+};
 const Contact = () => {
     function validateEmail(value: string) {
         const validate = value.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i);
@@ -60,43 +63,21 @@ const Contact = () => {
         }))
         console.log(messageData);
     }
-    const sendEmail = async (e:any) => {
+    const sendEmail = async (e: any) => {
         e.preventDefault();
         console.log("Se mando")
         console.log(messageData);
-        
-        const res = await fetch("https://backend-pokeapi-2a1d.onrender.com/webhooks/sendEmail",{
-            method:"POST",
-            headers:{
-                'Content-Type':'application/json'
+
+        const res = await fetchWithProxy("https://backend-pokeapi-2a1d.onrender.com/webhooks/sendEmail", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
             },
-            body:JSON.stringify({sender:messageData.sender, message:messageData.message, name:messageData.name})
+            body: JSON.stringify({ sender: messageData.sender, message: messageData.message, name: messageData.name })
         })
         console.log("RES");
         const data = await res.json();
         console.log(data);
-        /* const key = import.meta.env.PUBLIC_API_TOKEN;
-        console.log(key);
-        const mailerSend = new MailerSend({
-            apiKey: key
-        })
-        const recipients = [new Recipient("sanchezmendozajoseluis9@gmail.com", "José Luis")];
-        const variables = [
-            {
-                message: "Test"
-            }
-        ]
-        const sentFrom = new Sender("generalzerokiller@gmail.com", "Luis");
-        const emailParams = new EmailParams()
-            .setFrom(sentFrom)
-            .setTo(recipients)
-            .setReplyTo(sentFrom)
-            .setSubject("luis")
-            .setHtml("<strong>This is the HTML content</strong>")
-            .setText("This is the text content");
-        const send = await mailerSend.email.send(emailParams);
-        console.log("Enviado")
-        console.log(send); */
     }
     return (
         <>
@@ -155,7 +136,7 @@ const Contact = () => {
                         variant="ghost"
                         color="secondary"
                         disabled={noErrors}
-                        onClick={(e)=>{
+                        onClick={(e) => {
                             sendEmail(e);
                         }}
                     >Enviar</Button>
