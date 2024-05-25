@@ -43,7 +43,7 @@ const ProfileCard = ({ text }: { text: string }) => {
                 </motion.span>
             </div>
             <motion.div initial={{ opacity: 0, scale: 0 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7 }}>
-                <a href="/CV.pdf" target='_BLANK'>
+                <a href="/CV_JOSE_LUIS.pdf" target='_BLANK'>
                     <Button variant='ghost' color='secondary' className='mt-4'>Descarga Mi CV</Button>
                 </a>
             </motion.div>
