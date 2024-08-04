@@ -1,4 +1,4 @@
-import { Button, Tooltip } from '@nextui-org/react';
+import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Tooltip, useDisclosure } from '@nextui-org/react';
 import { NextUIProvider } from '@nextui-org/system';
 import { motion, useAnimation } from 'framer-motion';
 import { useState } from 'react';
@@ -7,8 +7,47 @@ const Proyects = () => {
     const childrenControls2 = useAnimation();
     const [showOverlay, setShowOverlay] = useState(false); // Estado para controlar la visibilidad del overlay
     const [showOverlay2, setShowOverlay2] = useState(false);
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    const { isOpen:isOpen2, onOpen:onOpen2, onOpenChange:onOpenChange2 } = useDisclosure();
+
     return (
         <>
+            <NextUIProvider>
+                <Modal isOpen={isOpen} onOpenChange={onOpenChange} className='card2' size='5xl' placement='center'>
+                    <ModalContent>
+                        {(onClose) => (
+                            <>
+                                <ModalHeader className="flex flex-col gap-1">POKE API ++</ModalHeader>
+                                <ModalBody>
+                                    <video src="/images/pokeapi.mp4" autoPlay loop muted className='w-full h-full max-h-[400px]'></video>
+                                </ModalBody>
+                                <ModalFooter>
+                                    <Button color="danger" variant="light" onPress={onClose}>
+                                        Cerrar
+                                    </Button>
+                                </ModalFooter>
+                            </>
+                        )}
+                    </ModalContent>
+                </Modal>
+                <Modal isOpen={isOpen2} onOpenChange={onOpenChange2} className='card2' size='5xl' placement='center'>
+                    <ModalContent>
+                        {(onClose) => (
+                            <>
+                                <ModalHeader className="flex flex-col gap-1">Arkitex</ModalHeader>
+                                <ModalBody>
+                                    <video src="/images/Arkitex.mp4" autoPlay loop muted className='w-full h-full max-h-[400px]'></video>
+                                </ModalBody>
+                                <ModalFooter>
+                                    <Button color="danger" variant="light" onPress={onClose}>
+                                        Cerrar
+                                    </Button>
+                                </ModalFooter>
+                            </>
+                        )}
+                    </ModalContent>
+                </Modal>
+            </NextUIProvider>
             <header className="px-8 pb-4 text-white  w-4/5 md:mr-96 border-b-1 border-gray-700">
                 <h2 className="text-3xl font-bold">Mis Proyectos</h2>
             </header>
@@ -83,15 +122,22 @@ const Proyects = () => {
                                                 </Button>
                                             </a>
                                         </Tooltip>
-                                        <Tooltip color='secondary' content="Ver Proyecto" closeDelay={0} classNames={{ content: 'bg-principal text-black' }} placement='bottom'>
+                                        <Tooltip color='secondary' content="No disponible" closeDelay={0} classNames={{ content: 'bg-principal text-black' }} placement='bottom'>
                                             <a href="https://front-pokeapi.onrender.com/login" target='_BLANK'>
-                                                <Button color='secondary' variant='ghost'>
+                                                <Button color='secondary' variant='ghost' disabled>
                                                     <i className="fa fa-external-link" aria-hidden="true"></i>
                                                 </Button>
                                             </a>
                                         </Tooltip>
+                                        <Tooltip color='secondary' content="Ver video completo" closeDelay={0} classNames={{ content: 'bg-principal text-black' }} placement='bottom'>
+                                            <Button color='secondary' variant='ghost' onClick={onOpen}>
+                                                <i className="fa-regular fa-circle-play" aria-hidden="true"></i>
+                                            </Button>
+                                        </Tooltip>
+
                                     </div>
                                 </div>
+
                             </NextUIProvider>
                         </div>
 
@@ -186,12 +232,17 @@ const Proyects = () => {
                                                 </Button>
                                             </a>
                                         </Tooltip>
-                                        <Tooltip color='secondary' content="Ver Proyecto" closeDelay={0} classNames={{ content: 'bg-principal text-black' }} placement='bottom'>
+                                        <Tooltip color='secondary' content="No disponible" closeDelay={0} classNames={{ content: 'bg-principal text-black' }} placement='bottom'>
                                             <a href="https://urielmeneses849.github.io/Arkitex/" target='_BLANK'>
-                                                <Button color='secondary' variant='ghost'>
+                                                <Button color='secondary' variant='ghost' disabled>
                                                     <i className="fa fa-external-link" aria-hidden="true"></i>
                                                 </Button>
                                             </a>
+                                        </Tooltip>
+                                        <Tooltip color='secondary' content="Ver video completo" closeDelay={0} classNames={{ content: 'bg-principal text-black' }} placement='bottom'>
+                                            <Button color='secondary' variant='ghost' onClick={onOpen2}>
+                                                <i className="fa-regular fa-circle-play" aria-hidden="true"></i>
+                                            </Button>
                                         </Tooltip>
                                     </div>
                                 </div>
