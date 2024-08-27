@@ -26,7 +26,7 @@ const ConfirmAccount = () => {
         };
 
         const queryParams = new URLSearchParams(window.location.search);
-        const token = queryParams.get('token');
+        const token = decodeURIComponent(queryParams.get('token')??'');
         if (token) {
             confirmAccount(token);
         } else {
