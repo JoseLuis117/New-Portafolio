@@ -19,7 +19,7 @@ const Proyects = () => {
                             <>
                                 <ModalHeader className="flex flex-col gap-1">POKE API ++</ModalHeader>
                                 <ModalBody>
-                                    <video src="/images/pokeapi.mp4" autoPlay loop muted className='w-full h-full max-h-[400px]'></video>
+                                    <video src="/images/pokeapi.mp4" autoPlay controls loop muted className='w-full h-full max-h-[400px]'></video>
                                 </ModalBody>
                                 <ModalFooter>
                                     <Button color="danger" variant="light" onPress={onClose}>
@@ -36,7 +36,7 @@ const Proyects = () => {
                             <>
                                 <ModalHeader className="flex flex-col gap-1">Arkitex</ModalHeader>
                                 <ModalBody>
-                                    <video src="/images/Arkitex.mp4" autoPlay loop muted className='w-full h-full max-h-[400px]'></video>
+                                    <video src="/images/Arkitex.mp4" autoPlay loop controls muted className='w-full h-full max-h-[400px]'></video>
                                 </ModalBody>
                                 <ModalFooter>
                                     <Button color="danger" variant="light" onPress={onClose}>
