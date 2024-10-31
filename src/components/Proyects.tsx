@@ -5,14 +5,36 @@ import { useState } from 'react';
 const Proyects = () => {
     const childControls = useAnimation(); // Control de animación del hijo
     const childrenControls2 = useAnimation();
+    const childrenControls3 = useAnimation();
     const [showOverlay, setShowOverlay] = useState(false); // Estado para controlar la visibilidad del overlay
     const [showOverlay2, setShowOverlay2] = useState(false);
+
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
-    const { isOpen:isOpen2, onOpen:onOpen2, onOpenChange:onOpenChange2 } = useDisclosure();
+    const { isOpen: isOpen2, onOpen: onOpen2, onOpenChange: onOpenChange2 } = useDisclosure();
+
+    const [showOverlay3, setShowOverlay3] = useState(false);
+    const { isOpen: isOpen3, onOpen: onOpen3, onOpenChange: onOpenChange3 } = useDisclosure();
 
     return (
         <>
             <NextUIProvider>
+                <Modal isOpen={isOpen3} onOpenChange={onOpenChange3} className='card2' size='5xl' placement='center'>
+                    <ModalContent>
+                        {(onClose) => (
+                            <>
+                                <ModalHeader className="flex flex-col gap-1">Techstore</ModalHeader>
+                                <ModalBody>
+                                    <video src="/images/techstore.mp4" autoPlay loop controls muted className='w-full h-full max-h-[400px]'></video>
+                                </ModalBody>
+                                <ModalFooter>
+                                    <Button color="danger" variant="light" onPress={onClose}>
+                                        Cerrar
+                                    </Button>
+                                </ModalFooter>
+                            </>
+                        )}
+                    </ModalContent>
+                </Modal>
                 <Modal isOpen={isOpen} onOpenChange={onOpenChange} className='card2' size='5xl' placement='center'>
                     <ModalContent>
                         {(onClose) => (
@@ -51,7 +73,122 @@ const Proyects = () => {
             <header className="px-8 pb-4 text-white  w-4/5 md:mr-96 border-b-1 border-gray-700">
                 <h2 className="text-3xl font-bold">Mis Proyectos</h2>
             </header>
-            <section className="lg:grid lg:grid-cols-2 p-4 w-full h-full md:grid-rows-2 px-8 space-y-4">
+            <section className="lg:grid lg:grid-cols-2 p-4 w-full h-full md:grid-rows-2 px-8 space-y-4 lg:h-[720px] h-[800px]">
+                <motion.div
+                    initial={{
+                        x: -200
+                    }}
+                    whileInView={{
+                        x: 0,
+                        transition: {
+                            duration: 0.6
+                        }
+                    }}
+                    className='pr-4 hidden lg:block'
+                >
+                    <h2 className='text-2xl'>Techstore</h2>
+                    <p className="text-gray-500">
+                        E-commerce con envío de emails, autenticación de usuarios mediante JWT para proteger las APIs, gestión de roles de usuario, uso de clean architecture en el backend, administración de estado global con Redux en el frontend, y manejo de almacenamiento local y cookies.
+                    </p>
+
+                </motion.div>
+                <motion.div
+                    className="relative w-full lg:h-full overflow-hidden cursor-pointer max-h-[220px] h-[220px]"
+                    initial={{
+                        x: 200
+                    }}
+                    whileInView={{
+                        x: 0,
+                        transition: {
+                            duration: 0.6
+                        }
+                    }}
+                    onHoverStart={() => {
+                        childrenControls3.start({ scale: 1.1 })
+                        setShowOverlay3(true);
+                    }
+                    }
+                    onHoverEnd={() => {
+                        childrenControls3.start({ scale: 1 })
+                        setShowOverlay3(false)
+                    }}
+                    onTap={() => {
+                        childrenControls3.start({ scale: 1.1 })
+                        setShowOverlay3(true);
+                    }}
+                >
+                    <motion.video src="/images/techstore.mp4" autoPlay loop muted className="absolute w-full h-full max-h-[220px]"
+                        initial={{ scale: 1 }}
+                        animate={childrenControls3}
+                    />
+                    {showOverlay3 && ( // Mostrar overlay si showOverlay es true
+                        <div className='flex justify-center items-center w-full h-full'>
+                            <motion.div className="absolute inset-0 bg-gray-800 z-10"
+                                initial={{
+                                    opacity: 0
+                                }}
+                                animate={{
+                                    opacity: 0.8
+                                }}
+                            >
+                            </motion.div>
+                            <NextUIProvider>
+                                <div className='flex justify-center flex-col items-center space-y-4'>
+                                    <h2 className='z-40 text-white'>Techstore</h2>
+                                    <div className='flex gap-2 z-40 mt-4'>
+                                        <div className='h-[30px] w-[30px]'>
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path fill="#f58220" d="M27.35 80.52l10.68-68.44c.37-2.33 3.5-2.89 4.6-.8l11.48 21.48-26.76 47.76zm75.94 16.63L93.1 34.11c-.31-1.96-2.76-2.76-4.17-1.35L24.71 97.15l35.54 19.95a7.447 7.447 0 007.18 0l35.86-19.95zm-28.85-55L66.21 26.5c-.92-1.78-3.44-1.78-4.36 0L25.7 90.95l48.74-48.8z" /></svg>
+                                        </div>
+                                        <div className='h-[30px] w-[30px]'>
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><g fill="#61DAFB"><circle cx="64" cy="64" r="11.4" /><path d="M107.3 45.2c-2.2-.8-4.5-1.6-6.9-2.3.6-2.4 1.1-4.8 1.5-7.1 2.1-13.2-.2-22.5-6.6-26.1-1.9-1.1-4-1.6-6.4-1.6-7 0-15.9 5.2-24.9 13.9-9-8.7-17.9-13.9-24.9-13.9-2.4 0-4.5.5-6.4 1.6-6.4 3.7-8.7 13-6.6 26.1.4 2.3.9 4.7 1.5 7.1-2.4.7-4.7 1.4-6.9 2.3C8.2 50 1.4 56.6 1.4 64s6.9 14 19.3 18.8c2.2.8 4.5 1.6 6.9 2.3-.6 2.4-1.1 4.8-1.5 7.1-2.1 13.2.2 22.5 6.6 26.1 1.9 1.1 4 1.6 6.4 1.6 7.1 0 16-5.2 24.9-13.9 9 8.7 17.9 13.9 24.9 13.9 2.4 0 4.5-.5 6.4-1.6 6.4-3.7 8.7-13 6.6-26.1-.4-2.3-.9-4.7-1.5-7.1 2.4-.7 4.7-1.4 6.9-2.3 12.5-4.8 19.3-11.4 19.3-18.8s-6.8-14-19.3-18.8zM92.5 14.7c4.1 2.4 5.5 9.8 3.8 20.3-.3 2.1-.8 4.3-1.4 6.6-5.2-1.2-10.7-2-16.5-2.5-3.4-4.8-6.9-9.1-10.4-13 7.4-7.3 14.9-12.3 21-12.3 1.3 0 2.5.3 3.5.9zM81.3 74c-1.8 3.2-3.9 6.4-6.1 9.6-3.7.3-7.4.4-11.2.4-3.9 0-7.6-.1-11.2-.4-2.2-3.2-4.2-6.4-6-9.6-1.9-3.3-3.7-6.7-5.3-10 1.6-3.3 3.4-6.7 5.3-10 1.8-3.2 3.9-6.4 6.1-9.6 3.7-.3 7.4-.4 11.2-.4 3.9 0 7.6.1 11.2.4 2.2 3.2 4.2 6.4 6 9.6 1.9 3.3 3.7 6.7 5.3 10-1.7 3.3-3.4 6.6-5.3 10zm8.3-3.3c1.5 3.5 2.7 6.9 3.8 10.3-3.4.8-7 1.4-10.8 1.9 1.2-1.9 2.5-3.9 3.6-6 1.2-2.1 2.3-4.2 3.4-6.2zM64 97.8c-2.4-2.6-4.7-5.4-6.9-8.3 2.3.1 4.6.2 6.9.2 2.3 0 4.6-.1 6.9-.2-2.2 2.9-4.5 5.7-6.9 8.3zm-18.6-15c-3.8-.5-7.4-1.1-10.8-1.9 1.1-3.3 2.3-6.8 3.8-10.3 1.1 2 2.2 4.1 3.4 6.1 1.2 2.2 2.4 4.1 3.6 6.1zm-7-25.5c-1.5-3.5-2.7-6.9-3.8-10.3 3.4-.8 7-1.4 10.8-1.9-1.2 1.9-2.5 3.9-3.6 6-1.2 2.1-2.3 4.2-3.4 6.2zM64 30.2c2.4 2.6 4.7 5.4 6.9 8.3-2.3-.1-4.6-.2-6.9-.2-2.3 0-4.6.1-6.9.2 2.2-2.9 4.5-5.7 6.9-8.3zm22.2 21l-3.6-6c3.8.5 7.4 1.1 10.8 1.9-1.1 3.3-2.3 6.8-3.8 10.3-1.1-2.1-2.2-4.2-3.4-6.2zM31.7 35c-1.7-10.5-.3-17.9 3.8-20.3 1-.6 2.2-.9 3.5-.9 6 0 13.5 4.9 21 12.3-3.5 3.8-7 8.2-10.4 13-5.8.5-11.3 1.4-16.5 2.5-.6-2.3-1-4.5-1.4-6.6zM7 64c0-4.7 5.7-9.7 15.7-13.4 2-.8 4.2-1.5 6.4-2.1 1.6 5 3.6 10.3 6 15.6-2.4 5.3-4.5 10.5-6 15.5C15.3 75.6 7 69.6 7 64zm28.5 49.3c-4.1-2.4-5.5-9.8-3.8-20.3.3-2.1.8-4.3 1.4-6.6 5.2 1.2 10.7 2 16.5 2.5 3.4 4.8 6.9 9.1 10.4 13-7.4 7.3-14.9 12.3-21 12.3-1.3 0-2.5-.3-3.5-.9zM96.3 93c1.7 10.5.3 17.9-3.8 20.3-1 .6-2.2.9-3.5.9-6 0-13.5-4.9-21-12.3 3.5-3.8 7-8.2 10.4-13 5.8-.5 11.3-1.4 16.5-2.5.6 2.3 1 4.5 1.4 6.6zm9-15.6c-2 .8-4.2 1.5-6.4 2.1-1.6-5-3.6-10.3-6-15.6 2.4-5.3 4.5-10.5 6-15.5 13.8 4 22.1 10 22.1 15.6 0 4.7-5.8 9.7-15.7 13.4z" /></g></svg>
+                                        </div>
+                                    </div>
+                                    <div className='z-40 flex gap-4'>
+                                        <Tooltip color='secondary' content="Código en github" closeDelay={0} classNames={{ content: 'bg-principal text-black' }} placement='bottom'>
+                                            <a href='https://github.com/UrielMeneses849/Arkitex' target='_BLANK'>
+                                                <Button color='secondary' variant='ghost'>
+                                                    <i className="fa fa-code-fork" aria-hidden="true"></i>
+                                                </Button>
+                                            </a>
+                                        </Tooltip>
+                                        <Tooltip color='secondary' content="No disponible" closeDelay={0} classNames={{ content: 'bg-principal text-black' }} placement='bottom'>
+                                            <a href="https://urielmeneses849.github.io/Arkitex/" target='_BLANK'>
+                                                <Button color='secondary' variant='ghost' disabled>
+                                                    <i className="fa fa-external-link" aria-hidden="true"></i>
+                                                </Button>
+                                            </a>
+                                        </Tooltip>
+                                        <Tooltip color='secondary' content="Ver video completo" closeDelay={0} classNames={{ content: 'bg-principal text-black' }} placement='bottom'>
+                                            <Button color='secondary' variant='ghost' onClick={onOpen3}>
+                                                <i className="fa-regular fa-circle-play" aria-hidden="true"></i>
+                                            </Button>
+                                        </Tooltip>
+                                    </div>
+                                </div>
+                            </NextUIProvider>
+                        </div>
+
+                    )}
+                </motion.div>
+                <motion.div
+                    initial={{
+                        x: -200
+                    }}
+                    whileInView={{
+                        x: 0,
+                        transition: {
+                            duration: 0.6
+                        }
+                    }}
+                    className='pr-4 block lg:hidden'
+                >
+                    <h2 className='text-2xl'>Techstore</h2>
+                    <p className="text-gray-500">
+                        E-commerce con envío de emails, autenticación de usuarios mediante JWT para proteger las APIs, gestión de roles de usuario, uso de clean architecture en el backend, administración de estado global con Redux en el frontend, y manejo de almacenamiento local y cookies.
+                    </p>
+                </motion.div>
+                {/* asdads */}
+
                 <motion.div
                     className="relative w-full lg:h-full overflow-hidden cursor-pointer max-h-[220px] h-[220px]"
                     initial={{
@@ -261,11 +398,14 @@ const Proyects = () => {
                             duration: 0.6
                         }
                     }}
-                    className='pr-4 block lg:hidden'
+                    className='pr-4 block lg:hidden lg:m-0 mt-4'
                 >
                     <h2 className='text-2xl'>Arkitex</h2>
                     <p className='text-gray-500'>Proyecto de titulación que busca conectar a trabajadores de la construcción con empleadores, desarrollado principalmente utilizando los SDK de Firebase, tales como Firestore, Cloud Storage y Firebase Auth.</p>
                 </motion.div>
+
+
+
             </section>
         </>
     )
