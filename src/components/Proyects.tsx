@@ -144,7 +144,7 @@ const Proyects = () => {
                                         </div>
                                     </div>
                                     <div className='z-40 flex gap-4'>
-                                        <Tooltip color='secondary' content="Código en github private" closeDelay={0} classNames={{ content: 'bg-principal text-black' }} placement='bottom'>
+                                        <Tooltip color='secondary' content="Repositorio privado" closeDelay={0} classNames={{ content: 'bg-principal text-black' }} placement='bottom'>
                                             <a href='https://github.com/UrielMeneses849/Arkitex' target='_BLANK'>
                                                 <Button color='secondary' variant='ghost' disabled={true}>
                                                     <i className="fa fa-code-fork" aria-hidden="true"></i>
