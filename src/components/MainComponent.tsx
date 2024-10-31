@@ -122,7 +122,7 @@ const MainComponent = () => {
                         </motion.section>
                     )}
                 </AnimatePresence>
-                <AnimatePresence>
+                {/* <AnimatePresence>
                     {actual === 4 && (
                         <motion.section
                             key="experience"
@@ -135,7 +135,7 @@ const MainComponent = () => {
                             <Contact />
                         </motion.section>
                     )}
-                </AnimatePresence>
+                </AnimatePresence> */}
             </div>
         </main>
     )

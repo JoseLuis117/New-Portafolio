@@ -15,13 +15,13 @@ const Navbar = ({ actual, setActual }: { actual: number, setActual: (value: numb
                     </span>
                 </a>
             </div>
-            <div>
+{/*             <div>
                 <a href="#" className={`flex-1 flex flex-col items-center gap-2 transition-all ${actual === 1 ? 'hoverNav' : ''}`} onClick={() => setActual(1)}>
                     <span className="icon far fa-list-alt"></span>
                     <span className="name font-normal text-xs sm:text-sm">Experiencia
                     </span>
                 </a>
-            </div>
+            </div> */}
             <div>
                 <a href="#" className={`flex-1 flex flex-col items-center gap-2 transition-all ${actual === 2 ? 'hoverNav' : ''}`} onClick={() => setActual(2)}>
                     <span className="icon fa-solid fa-code"></span>
@@ -29,13 +29,13 @@ const Navbar = ({ actual, setActual }: { actual: number, setActual: (value: numb
                     </span>
                 </a>
             </div>
-            <div>
+{/*             <div>
                 <a href="#" className={`flex-1 flex flex-col items-center gap-2 transition-all ${actual === 4 ? 'hoverNav' : ''}`} onClick={() => setActual(4)}>
                     <span className="icon fa fa-phone"></span>
                     <span className="name font-normal text-xs sm:text-sm">Contactame
                     </span>
                 </a>
-            </div>
+            </div> */}
         </nav>
     )
 }
